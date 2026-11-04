@@ -4,30 +4,162 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HOME | Elf Mysteries</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --red: #a4161a;
+      --red-dark: #660708;
+      --green: #1b4332;
+      --cream: #fdf8ef;
+      --ink: #1f1a17;
+      --muted: #5c524c;
+      --line: #e6dccf;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    /* Header: compact, same colour as the page */
+    .site-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      color: var(--red-dark);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    nav a {
+      display: block;
+      padding: 6px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover { color: var(--red); }
+    nav a[aria-current="page"] { color: var(--red); border-bottom-color: var(--red); }
+
+    /* Banner image from the original site */
+    .banner {
+      max-width: 960px;
+      margin: 24px auto 0;
+      padding: 0 16px;
+    }
+
+    .banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 347px;
+      margin: 0 auto 28px;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .motto {
+      margin: 36px 0 0;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green);
+    }
+
+    /* Footer: compact, same colour as the page */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    footer img { display: block; width: 24px; height: 24px; }
+    footer p { margin: 0; }
+
+    @media (max-width: 560px) {
+      .site-header { justify-content: center; }
+      nav ul { justify-content: center; }
+      nav a { padding: 6px 8px; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <p class="brand">Elf Mysteries</p>
-    <p class="tagline">Confidential. Professional. Magical.</p>
     <nav aria-label="Main">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="new-page.html">New Page</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="case-files.html">Case Files</a></li>
-        <li><a href="join-us.html">Join Us</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <img class="hero-logo"
-         src="https://static.wixstatic.com/media/2a0030_e9569f63fd5e401b9214d3afc6a52b7d~mv2.png/v1/fill/w_347,h_199,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20design%20%285%29.png"
-         alt="Elf on the Shelf Mysteries logo">
+  <div class="banner">
+    <img src="https://static.wixstatic.com/media/84770f_d5f923ba4796793244c7d147d935dc1f.png/v1/fill/w_1920,h_1160,al_c,q_95,enc_avif,quality_auto/84770f_d5f923ba4796793244c7d147d935dc1f.png"
+         alt="">
+  </div>
 
-    <p class="lead">At Elf on the Shelf Mysteries, we specialize in unraveling the mysteries of the North Pole! Whether it’s a missing toy, a misplaced list, or a curious case of candy cane capers, our team of top-notch Elf Private Investigators is on the job. With centuries of experience and a keen eye for detail, we keep Santa’s workshop running smoothly and ensure every elf’s holiday spirit stays bright. No case is too big or too small—if it’s a North Pole or Ch mystery, you can count on us to crack it!</p>
+  <main>
+    <img class="logo"
+         src="https://static.wixstatic.com/media/2a0030_e9569f63fd5e401b9214d3afc6a52b7d~mv2.png/v1/fill/w_347,h_199,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20design%20%285%29.png"
+         alt="Elf on the Shelf Mysteries">
+
+    <p class="intro">At Elf on the Shelf Mysteries, we specialize in unraveling the mysteries of the North Pole! Whether it’s a missing toy, a misplaced list, or a curious case of candy cane capers, our team of top-notch Elf Private Investigators is on the job. With centuries of experience and a keen eye for detail, we keep Santa’s workshop running smoothly and ensure every elf’s holiday spirit stays bright. No case is too big or too small—if it’s a North Pole or Ch mystery, you can count on us to crack it!</p>
 
     <p class="motto">Confidential. Professional. Magical.</p>
   </main>
