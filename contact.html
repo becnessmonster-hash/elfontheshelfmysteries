@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Elf Mysteries</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="brand">Elf Mysteries</p>
+    <p class="tagline">Confidential. Professional. Magical.</p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="new-page.html">New Page</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="case-files.html">Case Files</a></li>
+        <li><a href="join-us.html">Join Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact</h1>
+
+    <p class="lead">Have a North Pole mystery that needs solving? Reach out to us at Elf on the Shelf Mysteries! Whether you’ve spotted something suspicious in Santa’s workshop or need help tracking down a missing holiday treasure, our team is ready to spring into action. Send us a message via enchanted mail, or give us a ring on our magical hotline. No matter how big or small the mystery, we’re here to help—and we’ll have your case wrapped up quicker than Santa can say “Ho, Ho, Ho!” Don’t hesitate—contact us today and let the magic begin!</p>
+
+    <h2>Let's Chat</h2>
+
+    <!-- Static form: no server is attached. Point the form's action at a form
+         service (e.g. Formspree, Netlify Forms) to actually receive messages. -->
+    <form id="contact-form">
+      <label>First Name <input type="text" name="first_name" required></label>
+      <label>Last Name <input type="text" name="last_name"></label>
+      <label class="full">Email <input type="email" name="email" required></label>
+      <label class="full">Message <textarea name="message"></textarea></label>
+      <div class="full">
+        <button class="button" type="submit">Send</button>
+        <p class="thanks" id="thanks">Thanks for submitting!</p>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="YouTube">
+      <img src="https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png/v1/fill/w_39,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45bce1d726f64f1999c49feae57f6298.png" alt="YouTube">
+    </a>
+    <p>© 2035 Elf on the Shelf Mysteries</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.reset();
+      document.getElementById('thanks').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
