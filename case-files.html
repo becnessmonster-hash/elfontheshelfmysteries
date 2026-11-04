@@ -4,37 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Case Files | Elf Mysteries</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <p class="brand">Elf Mysteries</p>
-    <p class="tagline">Confidential. Professional. Magical.</p>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="new-page.html">New Page</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="case-files.html" aria-current="page">Case Files</a></li>
-        <li><a href="join-us.html">Join Us</a></li>
-      </ul>
-    </nav>
-  </header>
+  <style>
+    :root {
+      --red: #a4161a;
+      --red-dark: #660708;
+      --green: #1b4332;
+      --cream: #fdf8ef;
+      --ink: #1f1a17;
+      --muted: #5c524c;
+      --line: #e6dccf;
+      --gold: #e9c46a;
+      --card: #ffffff;
+    }
 
-  <main>
-    <h1>Case Files</h1>
+    * { box-sizing: border-box; }
 
-    <!-- PLACEHOLDER: the original Case Files page could not be copied
-         automatically. Paste its content here. -->
-    <p class="lead">These files are classified. Solve the riddle on the <a href="join-us.html">Join Us</a> page to find your way in.</p>
-  </main>
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
 
-  <footer>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="YouTube">
-      <img src="https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png/v1/fill/w_39,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45bce1d726f64f1999c49feae57f6298.png" alt="YouTube">
-    </a>
-    <p>© 2035 Elf on the Shelf Mysteries</p>
-  </footer>
-</body>
-</html>
+    /* Header: compact, same colour as the page */
+    .site-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      color: var(--red-dark);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    nav a {
+      display: block;
+      padding: 6px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover { color: var(--red); }
+    nav a[aria-current="page"] { color: var(--red); border-bottom-color: var(--red); }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 347px;
+      margin: 0 auto 28px;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .motto {
+      margin: 36px 0 0;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green);
+    }
+
+
+    h1 {
+      color: var(--red-dark);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.25;
+      margin: 0 0 20px;
+    }
+
+    a { color: var(--red); }
+
+    form { display: grid; gap: 14px; }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    input {
+      font: inherit;
+      padding: 10px 12px;
+      border: 1px solid #c9bfb6;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .button {
+      justify-self: start;
+      background: var(--red);
+      color: #fff;
+      border: 0;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing:
