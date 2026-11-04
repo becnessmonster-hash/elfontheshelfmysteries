@@ -149,11 +149,26 @@
 
     .button:hover { background: var(--red-dark); }
 
-    .thanks {
-      display: none;
-      margin: 12px 0 0;
-      color: var(--green);
-      font-weight: bold;
+    /* "Form is down" pop-up */
+    dialog.popup {
+      border: 0;
+      border-radius: 8px;
+      padding: 28px 28px 22px;
+      max-width: 360px;
+      width: calc(100% - 32px);
+      background: var(--cream);
+      color: var(--ink);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    dialog.popup::backdrop { background: rgba(31, 26, 23, 0.45); }
+
+    .popup form { display: block; text-align: center; }
+
+    .popup p {
+      margin: 0 0 20px;
+      font-size: 1.1rem;
     }
 
     @media (max-width: 560px) { form { grid-template-columns: 1fr; } }
@@ -202,8 +217,7 @@
 
     <h2>Let's Chat</h2>
 
-    <!-- No server is attached, so messages aren't sent anywhere yet.
-         To receive them, set this form's action to a form service such as Formspree. -->
+    <!-- No server is attached: pressing Send shows the "form is down" pop-up. -->
     <form id="contact-form">
       <label>First Name <input type="text" name="first_name" required></label>
       <label>Last Name <input type="text" name="last_name"></label>
@@ -211,10 +225,33 @@
       <label class="full">Message <textarea name="message"></textarea></label>
       <div class="full">
         <button class="button" type="submit">Send</button>
-        <p class="thanks" id="thanks" role="status">Thanks for submitting!</p>
       </div>
     </form>
   </main>
 
+  <dialog class="popup" id="popup">
+    <p>Oh no, our form is down. Please try again later</p>
+    <form method="dialog">
+      <button class="button" type="submit">OK</button>
+    </form>
+  </dialog>
+
   <footer>
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="YouTube">
+      <img src="https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png/v1/fill/w_39,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45bce1d726f64f1999c49feae57f6298.png" alt="YouTube">
+    </a>
+    <p>© 2035 Elf on the Shelf Mysteries</p>
+  </footer>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var popup = document.getElementById('popup');
+      if (popup.showModal) {
+        popup.showModal();
+      } else {
+        alert('Oh no, our form is down. Please try again later');
+      }
+    });
+  </script>
+</body>
+</html>
