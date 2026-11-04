@@ -4,20 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Elf Mysteries</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --red: #a4161a;
+      --red-dark: #660708;
+      --green: #1b4332;
+      --cream: #fdf8ef;
+      --ink: #1f1a17;
+      --muted: #5c524c;
+      --line: #e6dccf;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    /* Header: compact, same colour as the page */
+    .site-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      color: var(--red-dark);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    nav a {
+      display: block;
+      padding: 6px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover { color: var(--red); }
+    nav a[aria-current="page"] { color: var(--red); border-bottom-color: var(--red); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 347px;
+      margin: 0 auto 28px;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .motto {
+      margin: 36px 0 0;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green);
+    }
+
+
+    h1 {
+      color: var(--red-dark);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.25;
+      margin: 0 0 20px;
+    }
+
+    h2 { color: var(--red-dark); margin: 40px 0 16px; text-align: left; }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      text-align: left;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    input, textarea {
+      font: inherit;
+      padding: 10px 12px;
+      border: 1px solid #c9bfb6;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    input:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+
+    textarea { min-height: 140px; resize: vertical; }
+
+    .button {
+      background: var(--red);
+      color: #fff;
+      border: 0;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+    }
+
+    .button:hover { background: var(--red-dark); }
+
+    .thanks {
+      display: none;
+      margin: 12px 0 0;
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    @media (max-width: 560px) { form { grid-template-columns: 1fr; } }
+
+    /* Footer: compact, same colour as the page */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    footer img { display: block; width: 24px; height: 24px; }
+    footer p { margin: 0; }
+
+    @media (max-width: 560px) {
+      .site-header { justify-content: center; }
+      nav ul { justify-content: center; }
+      nav a { padding: 6px 8px; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <p class="brand">Elf Mysteries</p>
-    <p class="tagline">Confidential. Professional. Magical.</p>
     <nav aria-label="Main">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="new-page.html">New Page</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" aria-current="page">Contact</a></li>
         <li><a href="case-files.html">Case Files</a></li>
-        <li><a href="join-us.html">Join Us</a></li>
       </ul>
     </nav>
   </header>
@@ -25,12 +198,12 @@
   <main>
     <h1>Contact</h1>
 
-    <p class="lead">Have a North Pole mystery that needs solving? Reach out to us at Elf on the Shelf Mysteries! Whether you’ve spotted something suspicious in Santa’s workshop or need help tracking down a missing holiday treasure, our team is ready to spring into action. Send us a message via enchanted mail, or give us a ring on our magical hotline. No matter how big or small the mystery, we’re here to help—and we’ll have your case wrapped up quicker than Santa can say “Ho, Ho, Ho!” Don’t hesitate—contact us today and let the magic begin!</p>
+    <p class="intro">Have a North Pole mystery that needs solving? Reach out to us at Elf on the Shelf Mysteries! Whether you’ve spotted something suspicious in Santa’s workshop or need help tracking down a missing holiday treasure, our team is ready to spring into action. Send us a message via enchanted mail, or give us a ring on our magical hotline. No matter how big or small the mystery, we’re here to help—and we’ll have your case wrapped up quicker than Santa can say “Ho, Ho, Ho!” Don’t hesitate—contact us today and let the magic begin!</p>
 
     <h2>Let's Chat</h2>
 
-    <!-- Static form: no server is attached. Point the form's action at a form
-         service (e.g. Formspree, Netlify Forms) to actually receive messages. -->
+    <!-- No server is attached, so messages aren't sent anywhere yet.
+         To receive them, set this form's action to a form service such as Formspree. -->
     <form id="contact-form">
       <label>First Name <input type="text" name="first_name" required></label>
       <label>Last Name <input type="text" name="last_name"></label>
@@ -38,24 +211,10 @@
       <label class="full">Message <textarea name="message"></textarea></label>
       <div class="full">
         <button class="button" type="submit">Send</button>
-        <p class="thanks" id="thanks">Thanks for submitting!</p>
+        <p class="thanks" id="thanks" role="status">Thanks for submitting!</p>
       </div>
     </form>
   </main>
 
   <footer>
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="YouTube">
-      <img src="https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png/v1/fill/w_39,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45bce1d726f64f1999c49feae57f6298.png" alt="YouTube">
-    </a>
-    <p>© 2035 Elf on the Shelf Mysteries</p>
-  </footer>
-
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      this.reset();
-      document.getElementById('thanks').style.display = 'block';
-    });
-  </script>
-</body>
-</html>
