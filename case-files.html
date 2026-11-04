@@ -134,4 +134,395 @@
       border-radius: 4px;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.95rem;
-      letter-spacing:
+      letter-spacing: 0.12em;
+      cursor: pointer;
+    }
+
+    .button:hover { background: var(--red-dark); }
+
+    .callout {
+      background: var(--green);
+      color: #fff;
+      padding: 18px 22px;
+      border-radius: 4px;
+      margin-top: 32px;
+    }
+
+    .callout p { margin: 0; }
+
+    /* Case Files */
+    .gate {
+      background: var(--card);
+      border: 2px dashed var(--red);
+      border-radius: 6px;
+      padding: 24px;
+      max-width: 520px;
+    }
+
+    .gate form { grid-template-columns: 1fr; }
+    .forgot { justify-self: start; margin-top: -6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; }
+    .gate-error { color: var(--red); margin: 0; min-height: 1.2em; font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; }
+
+    .stamp {
+      display: inline-block;
+      margin: 0 0 8px;
+      padding: 4px 12px;
+      border: 2px solid var(--red);
+      color: var(--red);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+    }
+
+    /* Manila folder */
+    .case {
+      --front: #f1e0bb;
+      --back: #e6cf9f;
+      --edge: #d9bd84;
+      position: relative;
+      background: var(--front);
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 3px 0 var(--edge), 0 8px 18px rgba(80, 55, 20, 0.15);
+      padding: 26px 26px 22px;
+      margin: 76px 0 32px;
+    }
+
+    /* back panel peeking out above the front */
+    .case::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -16px;
+      height: 24px;
+      background: var(--back);
+      border-radius: 0 14px 0 0;
+      z-index: -1;
+    }
+
+    /* raised left section of the front panel */
+    .case::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -10px;
+      width: 36%;
+      height: 12px;
+      background: var(--front);
+      border-radius: 12px 0 0 0;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
+    }
+
+    /* the tab on the back panel, labelled with the case number */
+    .tab {
+      position: absolute;
+      left: 0;
+      top: -46px;
+      width: 36%;
+      min-width: 170px;
+      height: 34px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      background: var(--back);
+      clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
+      border-radius: 12px 12px 0 0;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5a4520;
+      font-size: 0.9rem;
+      z-index: -1;
+    }
+
+    main { position: relative; z-index: 0; }
+
+    .case-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .case h2 { margin: 0; font-size: 1.3rem; color: var(--red-dark); }
+
+    .status {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 2px solid;
+      border-radius: 3px;
+      transform: rotate(-4deg);
+      background: transparent;
+    }
+
+    .status.open { color: var(--red); }
+    .status.closed { color: var(--green); }
+
+    .summary p { margin: 14px 0 0; }
+
+    .reveal {
+      margin-top: 18px;
+      border-top: 1px dashed rgba(120, 90, 40, 0.35);
+      padding-top: 12px;
+    }
+
+    .reveal summary {
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .reveal h3 {
+      margin: 16px 0 4px;
+      font-size: 1rem;
+      color: var(--green);
+    }
+
+    .reveal p { margin: 6px 0 0; }
+    .reveal ul { margin: 6px 0 0; padding-left: 1.2em; }
+    .reveal li p { margin: 0 0 6px; }
+
+    .note { color: var(--muted); font-style: italic; margin-bottom: 0; }
+
+    .lineup {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      display: block;
+      overflow-x: auto;
+    }
+
+    .lineup th, .lineup td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(120, 90, 40, 0.2); }
+    .lineup th { color: var(--muted); font-weight: normal; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; }
+    .lineup .culprit { background: rgba(164, 22, 26, 0.1); font-weight: bold; }
+
+    .callout a { color: var(--gold); }
+
+    /* Footer: compact, same colour as the page */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    footer img { display: block; width: 24px; height: 24px; }
+    footer p { margin: 0; }
+
+    @media (max-width: 560px) {
+      .site-header { justify-content: center; }
+      nav ul { justify-content: center; }
+      nav a { padding: 6px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="case-files.html" aria-current="page">Case Files</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Case Files</h1>
+
+    <!-- Password gate. The password is the culprit's line-up position from the
+         Join Us riddle, in lowercase words. This is a game lock, not real security:
+         anyone who views the page source can find it. -->
+    <section id="gate" class="gate">
+      <p class="stamp">Classified</p>
+      <p>These files are for Elf Private Investigators only.</p>
+      <form id="gate-form">
+        <label>Password
+          <input type="password" id="gate-input" autocomplete="off" required>
+        </label>
+        <a class="forgot" href="join-us.html">Forgot Password</a>
+        <button class="button" type="submit">Open Files</button>
+        <p class="gate-error" id="gate-error" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- DRAFT CONTENT: edit freely. -->
+    <section id="files" hidden>
+      <p class="lead">Welcome to the team, Investigator. What follows is strictly confidential. Read carefully, keep your magnifying glass polished, and remember: every clue matters, even the ones covered in glitter.</p>
+
+      <article class="case">
+        <span class="tab">Case #001</span>
+        <div class="case-head">
+          <h2>The Missing Christmas Festival</h2>
+          <span class="status open">Open</span>
+        </div>
+        <div class="summary">
+          <p>Hollybrook's renowned Christmas Festival is under threat of being hijacked. A seemingly unconnected series of misfortunes have been claimed by a cyberhacker. The final act of sabotage has been locking of the system which is used to light the town's Christmas tree on Christmas Eve! The town can pay the ransom or risk finding the clues the hacker has left behind - if they get it wrong the outcome will be catastrophic.</p>
+          <p>The hacker has gotten everywhere from the Festival Website: &lt;insert here&gt; to the Australian Post System - somehow they've locked up the Festival Program the team has sent us to aid in our investigations - there must be something useful in there! </p>
+        </div>
+        <p class="note">Investigation ongoing. Investigators needed.</p>
+      </article>
+
+      <article class="case">
+        <span class="tab">Case #002</span>
+        <div class="case-head">
+          <h2>The Case of the Vanishing Toy Train</h2>
+          <span class="status closed">Closed</span>
+        </div>
+        <div class="summary">
+          <p>When Santa’s favorite toy train disappears from the workshop, it’s up to our elves to track it down before Christmas Eve!</p>
+        </div>
+        <details class="reveal">
+          <summary>Reveal the solution</summary>
+          <h3>The Culprit</h3>
+          <p>The prototype itself. During final testing, an accidental burst of North Pole magic triggered its unfinished self-drive system, sending it racing through the workshop unsupervised.</p>
+          <h3>Resolution</h3>
+          <p>The train was stopped safely, upgraded with a proper control switch, and later became one of the season’s most popular toys.</p>
+          <p>Its original prototype remains carefully stored after hours.</p>
+        </details>
+      </article>
+
+      <article class="case">
+        <span class="tab">Case #003</span>
+        <div class="case-head">
+          <h2>The Heist of the Golden Sleigh Bell</h2>
+          <span class="status closed">Closed</span>
+        </div>
+        <div class="summary">
+          <p>The <strong>Golden Sleigh Bell</strong> is not just decorative — it is one of the oldest magical artifacts at the North Pole, rung only once each year before Santa’s departure. When it disappeared during final sleigh checks, the entire hangar went into lockdown.</p>
+          <p>Initial evidence suggested someone familiar with workshop security: no forced entry, no broken seals, and only one unusual clue — a single silver feather caught in the sleigh rail.</p>
+          <p>Investigators traced faint drag marks upward into the rafters, where a hidden nest had been built above the maintenance lights.</p>
+        </div>
+        <details class="reveal">
+          <summary>Reveal the solution</summary>
+          <h3>The Culprit</h3>
+          <p>A young snow owl had taken the bell after being drawn to its shine and sound. It had carried the bell into its nest, collecting other shiny objects from around the hangar along the way.</p>
+          <h3>Resolution</h3>
+          <p>The bell was recovered undamaged and returned before Christmas Eve departure. The owl was safely relocated, and hangar staff introduced new security rules for magical artifacts during maintenance.</p>
+        </details>
+      </article>
+
+      <article class="case">
+        <span class="tab">Case #004</span>
+        <div class="case-head">
+          <h2>The Mystery of the Frosty Footprints</h2>
+          <span class="status closed">Closed</span>
+        </div>
+        <div class="summary">
+          <p>Strange footprints are found leading away from the reindeer stables—who’s been sneaking around in the snow? For five consecutive mornings, oversized frozen footprints appeared around the village perimeter. Each trail began at the forest edge and ended near the frozen lake, with no sign of who — or what — had made them.</p>
+          <p>No gates were disturbed, and no one reported sightings.</p>
+          <p>After fresh snowfall revealed a full overnight trail, investigators discovered the tracks circled the village, paused near the Christmas lights, and disappeared back toward the hills before dawn.</p>
+        </div>
+        <details class="reveal">
+          <summary>Reveal the solution</summary>
+          <h3>Investigation Objectives</h3>
+          <ul>
+          <li><p><strong>Identify the Origin of the Footprints:</strong> Determine who or what left the strange footprints.</p></li>
+          <li><p><strong>Investigate Potential Threats:</strong> Assess any potential risks or threats posed by the presence of these footprints.</p></li>
+          <li><p><strong>Ensure Reindeer Safety:</strong> Secure the reindeer stables and prevent any further incidents.</p></li>
+          </ul>
+          <h3>Resolution</h3>
+          <p>The investigation concluded with the identification of Jingle as the source of the mysterious footprints. The elf’s actions were found to be harmless, though unintentional. The reindeer stables were secured, and Jingle was given a formal warning and instructed to follow proper procedures for accessing the reindeer area in the future.</p>
+        </details>
+      </article>
+
+      <article class="case">
+        <span class="tab">Case #005</span>
+        <div class="case-head">
+          <h2>The Great Candy Cane Caper</h2>
+          <span class="status closed">Closed</span>
+        </div>
+        <div class="summary">
+          <p>One morning, the candy cane factory alarm bells rang. Thousands of candy canes had vanished overnight.</p>
+          <p>The factory floor was covered with red-and-white crumbs, and a peppermint scent filled the air.</p>
+          <p>Investigators followed a sticky trail through the workshop, across the reindeer stables, and all the way to the snow-covered forest.</p>
+        </div>
+        <details class="reveal">
+          <summary>Reveal the solution</summary>
+          <h3>The Culprit</h3>
+          <p>A group of hungry <strong>snow bunnies</strong> had discovered a hole in the candy storage wall.</p>
+          <p>They had been carrying candy canes away to decorate their burrows for the holidays.</p>
+          <h3>Resolution</h3>
+          <p>The North Pole engineers fixed the wall, and the elves kindly delivered a special crate of <strong>mini candy canes</strong> for the snow bunnies each winter.</p>
+          <p>Everyone agreed: sharing candy is better than stealing it.</p>
+        </details>
+      </article>
+
+      <article class="case">
+        <span class="tab">Case #006</span>
+        <div class="case-head">
+          <h2>The Shadow of the North Pole Syndicate</h2>
+          <span class="status closed">Closed</span>
+        </div>
+        <div class="summary">
+          <p>A powerful underground syndicate is threatening to disrupt Santa’s entire operation. Our top investigators must infiltrate the dark side of the North Pole, outwit the elusive leader, and dismantle the network before Christmas is thrown into chaos.</p>
+        </div>
+        <details class="reveal">
+          <summary>Reveal the solution</summary>
+          <h3>The Culprit</h3>
+          <p>A group of rookie elves had formed a “secret club” to practice their detective skills. Unfortunately, their sneaking around caused chaos in the workshop.</p>
+          <h3>Resolution</h3>
+          <p>Instead of being in trouble, the elves were invited to join the <strong>Junior North Pole Detective Training Program</strong>.</p>
+          <p>The Syndicate was officially disbanded… but their detective careers were just beginning.</p>
+        </details>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" aria-label="YouTube">
+      <img src="https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png/v1/fill/w_39,h_39,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45bce1d726f64f1999c49feae57f6298.png" alt="YouTube">
+    </a>
+    <p>© 2035 Elf on the Shelf Mysteries</p>
+  </footer>
+  <script>
+    (function () {
+      var KEY = atob('dGhyZWU=');
+      var gate = document.getElementById('gate');
+      var files = document.getElementById('files');
+
+      function unlock() {
+        gate.hidden = true;
+        files.hidden = false;
+      }
+
+      try {
+        if (sessionStorage.getItem('caseFilesOpen') === '1') unlock();
+      } catch (e) {}
+
+      document.getElementById('gate-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var guess = document.getElementById('gate-input').value.trim().toLowerCase();
+        if (guess === KEY) {
+          try { sessionStorage.setItem('caseFilesOpen', '1'); } catch (err) {}
+          unlock();
+        } else {
+          document.getElementById('gate-error').textContent =
+            'Access denied. Check the line-up again, Investigator.';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
