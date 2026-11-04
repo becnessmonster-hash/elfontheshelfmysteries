@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Case Files | Elf Mysteries</title>
+  <title>Get Password | Elf Mysteries</title>
   <style>
     :root {
       --red: #a4161a;
@@ -13,8 +13,6 @@
       --ink: #1f1a17;
       --muted: #5c524c;
       --line: #e6dccf;
-      --gold: #e9c46a;
-      --card: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -73,7 +71,7 @@
     nav a[aria-current="page"] { color: var(--red); border-bottom-color: var(--red); }
 
     main {
-      max-width: 860px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 32px 16px 48px;
     }
@@ -105,210 +103,38 @@
       margin: 0 0 20px;
     }
 
-    a { color: var(--red); }
-
-    form { display: grid; gap: 14px; }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .back {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--red);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
-    input {
-      font: inherit;
-      padding: 10px 12px;
-      border: 1px solid #c9bfb6;
-      border-radius: 4px;
+    .riddle {
       background: #fff;
-    }
-
-    .button {
-      justify-self: start;
-      background: var(--red);
-      color: #fff;
-      border: 0;
-      padding: 12px 32px;
+      border-left: 4px solid var(--red);
       border-radius: 4px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 20px 24px;
+      margin-top: 28px;
     }
 
-    .button:hover { background: var(--red-dark); }
+    .riddle h2 { color: var(--red-dark); margin: 0 0 12px; }
 
-    .callout {
+    .clues { padding-left: 1.4em; margin-bottom: 0; }
+    .clues li { margin-bottom: 10px; }
+
+    .hint {
       background: var(--green);
       color: #fff;
       padding: 18px 22px;
       border-radius: 4px;
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
-    .callout p { margin: 0; }
-
-    /* Case Files */
-    .gate {
-      background: var(--card);
-      border: 2px dashed var(--red);
-      border-radius: 6px;
-      padding: 24px;
-      max-width: 520px;
-    }
-
-    .gate form { grid-template-columns: 1fr; }
-    .forgot { justify-self: start; margin-top: -6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; }
-    .gate-error { color: var(--red); margin: 0; min-height: 1.2em; font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; }
-
-    .stamp {
-      display: inline-block;
-      margin: 0 0 8px;
-      padding: 4px 12px;
-      border: 2px solid var(--red);
-      color: var(--red);
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transform: rotate(-3deg);
-    }
-
-    /* Manila folder */
-    .case {
-      --front: #f1e0bb;
-      --back: #e6cf9f;
-      --edge: #d9bd84;
-      position: relative;
-      background: var(--front);
-      border-radius: 0 0 6px 6px;
-      box-shadow: 0 3px 0 var(--edge), 0 8px 18px rgba(80, 55, 20, 0.15);
-      padding: 26px 26px 22px;
-      margin: 76px 0 32px;
-    }
-
-    /* back panel peeking out above the front */
-    .case::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -16px;
-      height: 24px;
-      background: var(--back);
-      border-radius: 0 14px 0 0;
-      z-index: -1;
-    }
-
-    /* raised left section of the front panel */
-    .case::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: -10px;
-      width: 36%;
-      height: 12px;
-      background: var(--front);
-      border-radius: 12px 0 0 0;
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
-    }
-
-    /* the tab on the back panel, labelled with the case number */
-    .tab {
-      position: absolute;
-      left: 0;
-      top: -46px;
-      width: 36%;
-      min-width: 170px;
-      height: 34px;
-      padding: 0 22px;
-      display: flex;
-      align-items: center;
-      background: var(--back);
-      clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
-      border-radius: 12px 12px 0 0;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: bold;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #5a4520;
-      font-size: 0.9rem;
-      z-index: -1;
-    }
-
-    main { position: relative; z-index: 0; }
-
-    .case-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .case h2 { margin: 0; font-size: 1.3rem; color: var(--red-dark); }
-
-    .status {
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: bold;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border: 2px solid;
-      border-radius: 3px;
-      transform: rotate(-4deg);
-      background: transparent;
-    }
-
-    .status.open { color: var(--red); }
-    .status.closed { color: var(--green); }
-
-    .summary p { margin: 14px 0 0; }
-
-    .reveal {
-      margin-top: 18px;
-      border-top: 1px dashed rgba(120, 90, 40, 0.35);
-      padding-top: 12px;
-    }
-
-    .reveal summary {
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    .reveal h3 {
-      margin: 16px 0 4px;
-      font-size: 1rem;
-      color: var(--green);
-    }
-
-    .reveal p { margin: 6px 0 0; }
-    .reveal ul { margin: 6px 0 0; padding-left: 1.2em; }
-    .reveal li p { margin: 0 0 6px; }
-
-    .note { color: var(--muted); font-style: italic; margin-bottom: 0; }
-
-    .lineup {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.9rem;
-      display: block;
-      overflow-x: auto;
-    }
-
-    .lineup th, .lineup td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(120, 90, 40, 0.2); }
-    .lineup th { color: var(--muted); font-weight: normal; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; }
-    .lineup .culprit { background: rgba(164, 22, 26, 0.1); font-weight: bold; }
-
-    .callout a { color: var(--gold); }
+    .hint p { margin: 0; }
+    .hint a { color: #e9c46a; }
 
     /* Footer: compact, same colour as the page */
     footer {
@@ -348,146 +174,39 @@
   </header>
 
   <main>
-    <h1>Case Files</h1>
+    <a class="back" href="case-files.html">&larr; Back to Case Files</a>
+    <h1>Get Password</h1>
 
-    <!-- Password gate. The password is the culprit's line-up position from the
-         Join Us riddle, in lowercase words. This is a game lock, not real security:
-         anyone who views the page source can find it. -->
-    <section id="gate" class="gate">
-      <p class="stamp">Classified</p>
-      <p>These files are for Elf Private Investigators only.</p>
-      <form id="gate-form">
-        <label>Password
-          <input type="password" id="gate-input" autocomplete="off" required>
-        </label>
-        <a class="forgot" href="get-password.html">Forgot Password</a>
-        <button class="button" type="submit">Open Files</button>
-        <p class="gate-error" id="gate-error" role="alert"></p>
-      </form>
+    <p class="intro">Getting into our Case Files isn't meant to be easy. Solving the riddle below will help you move in the right direction!</p>
+
+    <section class="riddle">
+      <h2>The Elf Did It</h2>
+
+      <p>"Help! Stop! Police!" shouted the bank manager, Elf Sparklefoot. "The Elf did it!" It took a couple of minutes for the police officer to realise that Elf Sparklefoot was speaking the truth. The bank had just been robbed by an elf. Throughout the rest of the day, the police were able to round up six suspects. Each Elf had an alibi, so the police had the six come down to the station for a line up. Elf Sparklefoot easily identified the guilty elf and he was locked up behind bars to await trial. From the clues provided can you determine the position of each elf in the line up, where the police found him, and his alibi?</p>
+
+      <ol class="clues">
+        <li>The alibi Jeeves gave is that he was at home dusting the ming vase.</li>
+        <li>The culprit is Jeeves.</li>
+        <li>Alfred is standing closer to the suspect found at the drugstore than he is standing to the one found at the cigar shop.</li>
+        <li>Hobson is not standing next to Jeeves.</li>
+        <li>There was a shiny limo parked at the drugstore as the police were rounding up suspects.</li>
+        <li>The suspect who claimed to be out having the limo washed and waxed is standing the farthest away from Jeeves.</li>
+        <li>Jeeves was found at the antique shop.</li>
+        <li>The suspect who claimed to have been home pressing the perfect creases into trousers wasn't found at the cafe.</li>
+        <li>Reginald is somewhere to the left of Jeeves.</li>
+        <li>The suspect who claimed to be out having the limo waxed and washed is standing four to the right of Godfrey.</li>
+        <li>Godfrey isn't the one who said he was home polishing silver.</li>
+        <li>The suspect detained at the winery is standing closer to Jeeves than the one detained at the drugstore is standing to Jeeves.</li>
+        <li>Hobson was enjoying a croissant when he was found.</li>
+        <li>The person who was home drawing a bath while the crime occurred is standing immediately to the right of Reginald.</li>
+        <li>The suspect found at the bookstore is standing two to the left and two to the right of the ones found at the winery and the drugstore, in some order.</li>
+        <li>The six elves are Jeeves, the one standing as far to the left of Jeeves as the one found in the cafe is standing to the right of Jeeves, Lurch, the one who was home pressing the perfect creases in trousers, the one who was home shinning shoes, and the one who was standing three to the left of the one found at the cafe.</li>
+      </ol>
     </section>
 
-    <!-- DRAFT CONTENT: edit freely. -->
-    <section id="files" hidden>
-      <p class="lead">Welcome to the team, Investigator. What follows is strictly confidential. Read carefully, keep your magnifying glass polished, and remember: every clue matters, even the ones covered in glitter.</p>
-
-      <article class="case">
-        <span class="tab">Case #001</span>
-        <div class="case-head">
-          <h2>The Missing Christmas Festival</h2>
-          <span class="status open">Open</span>
-        </div>
-        <div class="summary">
-          <p>Hollybrook's renowned Christmas Festival is under threat of being hijacked. A seemingly unconnected series of misfortunes have been claimed by a cyberhacker. The final act of sabotage has been locking of the system which is used to light the town's Christmas tree on Christmas Eve! The town can pay the ransom or risk finding the clues the hacker has left behind - if they get it wrong the outcome will be catastrophic.</p>
-          <p>The hacker has gotten everywhere from the Festival Website: &lt;insert here&gt; to the Australian Post System - somehow they've locked up the Festival Program the team has sent us to aid in our investigations - there must be something useful in there! </p>
-        </div>
-        <p class="note">Investigation ongoing. Investigators needed.</p>
-      </article>
-
-      <article class="case">
-        <span class="tab">Case #002</span>
-        <div class="case-head">
-          <h2>The Case of the Vanishing Toy Train</h2>
-          <span class="status closed">Closed</span>
-        </div>
-        <div class="summary">
-          <p>When Santa’s favorite toy train disappears from the workshop, it’s up to our elves to track it down before Christmas Eve!</p>
-        </div>
-        <details class="reveal">
-          <summary>Reveal the solution</summary>
-          <h3>The Culprit</h3>
-          <p>The prototype itself. During final testing, an accidental burst of North Pole magic triggered its unfinished self-drive system, sending it racing through the workshop unsupervised.</p>
-          <h3>Resolution</h3>
-          <p>The train was stopped safely, upgraded with a proper control switch, and later became one of the season’s most popular toys.</p>
-          <p>Its original prototype remains carefully stored after hours.</p>
-        </details>
-      </article>
-
-      <article class="case">
-        <span class="tab">Case #003</span>
-        <div class="case-head">
-          <h2>The Heist of the Golden Sleigh Bell</h2>
-          <span class="status closed">Closed</span>
-        </div>
-        <div class="summary">
-          <p>The <strong>Golden Sleigh Bell</strong> is not just decorative — it is one of the oldest magical artifacts at the North Pole, rung only once each year before Santa’s departure. When it disappeared during final sleigh checks, the entire hangar went into lockdown.</p>
-          <p>Initial evidence suggested someone familiar with workshop security: no forced entry, no broken seals, and only one unusual clue — a single silver feather caught in the sleigh rail.</p>
-          <p>Investigators traced faint drag marks upward into the rafters, where a hidden nest had been built above the maintenance lights.</p>
-        </div>
-        <details class="reveal">
-          <summary>Reveal the solution</summary>
-          <h3>The Culprit</h3>
-          <p>A young snow owl had taken the bell after being drawn to its shine and sound. It had carried the bell into its nest, collecting other shiny objects from around the hangar along the way.</p>
-          <h3>Resolution</h3>
-          <p>The bell was recovered undamaged and returned before Christmas Eve departure. The owl was safely relocated, and hangar staff introduced new security rules for magical artifacts during maintenance.</p>
-        </details>
-      </article>
-
-      <article class="case">
-        <span class="tab">Case #004</span>
-        <div class="case-head">
-          <h2>The Mystery of the Frosty Footprints</h2>
-          <span class="status closed">Closed</span>
-        </div>
-        <div class="summary">
-          <p>Strange footprints are found leading away from the reindeer stables—who’s been sneaking around in the snow? For five consecutive mornings, oversized frozen footprints appeared around the village perimeter. Each trail began at the forest edge and ended near the frozen lake, with no sign of who — or what — had made them.</p>
-          <p>No gates were disturbed, and no one reported sightings.</p>
-          <p>After fresh snowfall revealed a full overnight trail, investigators discovered the tracks circled the village, paused near the Christmas lights, and disappeared back toward the hills before dawn.</p>
-        </div>
-        <details class="reveal">
-          <summary>Reveal the solution</summary>
-          <h3>Investigation Objectives</h3>
-          <ul>
-          <li><p><strong>Identify the Origin of the Footprints:</strong> Determine who or what left the strange footprints.</p></li>
-          <li><p><strong>Investigate Potential Threats:</strong> Assess any potential risks or threats posed by the presence of these footprints.</p></li>
-          <li><p><strong>Ensure Reindeer Safety:</strong> Secure the reindeer stables and prevent any further incidents.</p></li>
-          </ul>
-          <h3>Resolution</h3>
-          <p>The investigation concluded with the identification of Jingle as the source of the mysterious footprints. The elf’s actions were found to be harmless, though unintentional. The reindeer stables were secured, and Jingle was given a formal warning and instructed to follow proper procedures for accessing the reindeer area in the future.</p>
-        </details>
-      </article>
-
-      <article class="case">
-        <span class="tab">Case #005</span>
-        <div class="case-head">
-          <h2>The Great Candy Cane Caper</h2>
-          <span class="status closed">Closed</span>
-        </div>
-        <div class="summary">
-          <p>One morning, the candy cane factory alarm bells rang. Thousands of candy canes had vanished overnight.</p>
-          <p>The factory floor was covered with red-and-white crumbs, and a peppermint scent filled the air.</p>
-          <p>Investigators followed a sticky trail through the workshop, across the reindeer stables, and all the way to the snow-covered forest.</p>
-        </div>
-        <details class="reveal">
-          <summary>Reveal the solution</summary>
-          <h3>The Culprit</h3>
-          <p>A group of hungry <strong>snow bunnies</strong> had discovered a hole in the candy storage wall.</p>
-          <p>They had been carrying candy canes away to decorate their burrows for the holidays.</p>
-          <h3>Resolution</h3>
-          <p>The North Pole engineers fixed the wall, and the elves kindly delivered a special crate of <strong>mini candy canes</strong> for the snow bunnies each winter.</p>
-          <p>Everyone agreed: sharing candy is better than stealing it.</p>
-        </details>
-      </article>
-
-      <article class="case">
-        <span class="tab">Case #006</span>
-        <div class="case-head">
-          <h2>The Shadow of the North Pole Syndicate</h2>
-          <span class="status closed">Closed</span>
-        </div>
-        <div class="summary">
-          <p>A powerful underground syndicate is threatening to disrupt Santa’s entire operation. Our top investigators must infiltrate the dark side of the North Pole, outwit the elusive leader, and dismantle the network before Christmas is thrown into chaos.</p>
-        </div>
-        <details class="reveal">
-          <summary>Reveal the solution</summary>
-          <h3>The Culprit</h3>
-          <p>A group of rookie elves had formed a “secret club” to practice their detective skills. Unfortunately, their sneaking around caused chaos in the workshop.</p>
-          <h3>Resolution</h3>
-          <p>Instead of being in trouble, the elves were invited to join the <strong>Junior North Pole Detective Training Program</strong>.</p>
-          <p>The Syndicate was officially disbanded… but their detective careers were just beginning.</p>
-        </details>
-      </article>
-
-    </section>
+    <div class="hint">
+      <p>The culprit's line up position is the path forward - just the number in lowercase letters. <a href="contact.html">Send the full solution to us</a> for some extra assistance!</p>
+    </div>
   </main>
 
   <footer>
@@ -496,38 +215,5 @@
     </a>
     <p>© 2035 Elf on the Shelf Mysteries</p>
   </footer>
-  <script>
-    (function () {
-      var KEY = atob('dGhyZWU=');
-      var gate = document.getElementById('gate');
-      var files = document.getElementById('files');
-
-      function unlock() {
-        gate.hidden = true;
-        files.hidden = false;
-      }
-
-      // Re-lock if the browser restores this page from its back/forward cache
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-          files.hidden = true;
-          gate.hidden = false;
-          document.getElementById('gate-input').value = '';
-          document.getElementById('gate-error').textContent = '';
-        }
-      });
-
-      document.getElementById('gate-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var guess = document.getElementById('gate-input').value.trim().toLowerCase();
-        if (guess === KEY) {
-          unlock();
-        } else {
-          document.getElementById('gate-error').textContent =
-            'Access denied. Check the line-up again, Investigator.';
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
